@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="L1IVRO3tX7ocBHNp">
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="JavaScript,requireJs,Es6,Git,NodeJs,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="GIT全局配置用户名和邮箱12git config --global user.name &apos;平台设置用户名&apos;git config --global user.email &apos;平台绑定邮箱名&apos;  配置密钥对1ssh-keygen  查看git公钥1231.cd ~/.ssh2.ls3.cat id_rsa.pub  进入项目目录执行初始化git本地仓库1git init  赋值线上仓库的SSH地址1g">
+<meta name="keywords" content="JavaScript,requireJs,Es6,Git,NodeJs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于git,nodeJs,gulp,以及requireJs">
+<meta property="og:url" content="http://www.noh55iw.com/RequireJs/index.html">
+<meta property="og:site_name" content="你是我遥远万里最牵挂的猪">
+<meta property="og:description" content="GIT全局配置用户名和邮箱12git config --global user.name &apos;平台设置用户名&apos;git config --global user.email &apos;平台绑定邮箱名&apos;  配置密钥对1ssh-keygen  查看git公钥1231.cd ~/.ssh2.ls3.cat id_rsa.pub  进入项目目录执行初始化git本地仓库1git init  赋值线上仓库的SSH地址1g">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-02T06:40:43.816Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于git,nodeJs,gulp,以及requireJs">
+<meta name="twitter:description" content="GIT全局配置用户名和邮箱12git config --global user.name &apos;平台设置用户名&apos;git config --global user.email &apos;平台绑定邮箱名&apos;  配置密钥对1ssh-keygen  查看git公钥1231.cd ~/.ssh2.ls3.cat id_rsa.pub  进入项目目录执行初始化git本地仓库1git init  赋值线上仓库的SSH地址1g">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.noh55iw.com/RequireJs/">
+
+
+
+
+
+  <title>关于git,nodeJs,gulp,以及requireJs | 你是我遥远万里最牵挂的猪</title>
+  
+
+
+
+
+
+
+
+
+  <meta name="baidu-site-verification" content="L1IVRO3tX7ocBHNp">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+      <a href="https://github.com/doit9Vansl" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">你是我遥远万里最牵挂的猪</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">知进退,明得失</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th-list"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.noh55iw.com/RequireJs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="或">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="你是我遥远万里最牵挂的猪">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">关于git,nodeJs,gulp,以及requireJs</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-26T14:07:59+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Updated on</span>
+              
+              <time title="Updated on" itemprop="dateModified" datetime="2019-10-02T14:40:43+08:00">
+                2019-10-02
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/work/" itemprop="url" rel="index">
+                    <span itemprop="name">work</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/work/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                
+                 <span class="post-meta-item-text">comments&#58;</span>
+               
+                <a href="/RequireJs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/RequireJs/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/RequireJs/" class="leancloud_visitors" data-flag-title="关于git,nodeJs,gulp,以及requireJs">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="GIT"><a href="#GIT" class="headerlink" title="GIT"></a>GIT</h1><h3 id="全局配置用户名和邮箱"><a href="#全局配置用户名和邮箱" class="headerlink" title="全局配置用户名和邮箱"></a>全局配置用户名和邮箱</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">'平台设置用户名'</span></span><br><span class="line">git config --global user.email <span class="string">'平台绑定邮箱名'</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="配置密钥对"><a href="#配置密钥对" class="headerlink" title="配置密钥对"></a>配置密钥对</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看git公钥"><a href="#查看git公钥" class="headerlink" title="查看git公钥"></a>查看git公钥</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>cd ~<span class="regexp">/.ssh</span></span><br><span class="line"><span class="regexp">2.ls</span></span><br><span class="line"><span class="regexp">3.cat id_rsa.pub</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="进入项目目录执行初始化git本地仓库"><a href="#进入项目目录执行初始化git本地仓库" class="headerlink" title="进入项目目录执行初始化git本地仓库"></a>进入项目目录执行初始化git本地仓库</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<h3 id="赋值线上仓库的SSH地址"><a href="#赋值线上仓库的SSH地址" class="headerlink" title="赋值线上仓库的SSH地址"></a>赋值线上仓库的SSH地址</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin [线上仓库的ssh地址]</span><br></pre></td></tr></table></figure>
+
+<h3 id="经过三步命令把代码放到本地仓库以及线上"><a href="#经过三步命令把代码放到本地仓库以及线上" class="headerlink" title="经过三步命令把代码放到本地仓库以及线上"></a>经过三步命令把代码放到本地仓库以及线上</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add -A   （把所有代码添加到本地暂存区）	</span><br><span class="line">git commit -m <span class="string">'这次提交做的更新或者修改'</span>  （把代码从暂存区取提交到本地仓库）</span><br><span class="line">git push origin master  （把代码从本地仓库推送到线上）</span><br></pre></td></tr></table></figure>
+
+<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git status  查看当前仓库文件状态</span><br><span class="line">git pull  </span><br><span class="line">git clone [线上地址]  可以把线上的仓库代码克隆到本地</span><br><span class="line">git log  查看提交日志，也可以看到每一个提交的版本号</span><br><span class="line">it reset --hard [要回退的版本号]  版本回退，可以在各个版本之间来回穿梭</span><br><span class="line">git diff [文件名] 可以查看这次修改内容</span><br></pre></td></tr></table></figure>
+
+<h3 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h3><blockquote>
+<p>当在做一个不确定的新功能的时候，同时也在改bug的时候，采用分支管理</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git branch				  #查看分支  master 主分支</span><br><span class="line">git checkout -b 分支名     #创建分支,并切换到分支</span><br><span class="line">git merge 分支名			#合并分支</span><br><span class="line">git push origin 分支名		#把代码上传到远程分支，有这个分支的时候直接push，没有的时候就创建。</span><br></pre></td></tr></table></figure>
+
+<p>###常见linux命令</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd [目录名称] 进入目录</span><br><span class="line">touch [文件名] 新建文件</span><br><span class="line">ls  查看当前目录下的所有文件和文件夹</span><br><span class="line">rm [文件名] 删除一个文件</span><br></pre></td></tr></table></figure>
+
+<h1 id="Node-js以及gulp"><a href="#Node-js以及gulp" class="headerlink" title="Node.js以及gulp"></a>Node.js以及gulp</h1><h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本"></a>查看版本</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v  （npm：node package mananger --node包管理工具）</span><br></pre></td></tr></table></figure>
+
+<h3 id="全局安装-gulp"><a href="#全局安装-gulp" class="headerlink" title="全局安装 gulp"></a>全局安装 gulp</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp@<span class="number">3</span> -g   （@<span class="number">3</span>是第<span class="number">3</span>版本。mac：前面添加sudo）</span><br></pre></td></tr></table></figure>
+
+<h3 id="在项目目录下生成-package-json-文件"><a href="#在项目目录下生成-package-json-文件" class="headerlink" title="在项目目录下生成 package.json 文件"></a>在项目目录下生成 package.json 文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="在项目目录中本地安装-gulp"><a href="#在项目目录中本地安装-gulp" class="headerlink" title="在项目目录中本地安装 gulp"></a>在项目目录中本地安装 gulp</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install gulp@<span class="number">3</span> --save-dev  </span><br><span class="line">(本地安装成功后，会生成 node_modules 文件夹.ps:此处安装的gulp版本须和全局安装的是同一个版本.</span><br><span class="line"> mac：前面添加sudo）</span><br></pre></td></tr></table></figure>
+
+<h3 id="在项目目录中本地安装-gulp-插件-https-www-npmjs-com"><a href="#在项目目录中本地安装-gulp-插件-https-www-npmjs-com" class="headerlink" title="在项目目录中本地安装 gulp 插件(https://www.npmjs.com)"></a>在项目目录中本地安装 gulp 插件(<a href="https://www.npmjs.com" target="_blank" rel="noopener">https://www.npmjs.com</a>)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">**压缩CSS：gulp-clean-css**</span><br><span class="line">npm install gulp-clean-css --save-dev   （mac：前面添加sudo）</span><br><span class="line">**压缩JS：gulp-uglify**</span><br><span class="line">npm install --save-dev gulp-uglify    （mac：前面添加sudo）</span><br><span class="line">**压缩Html：gulp-htmlmin**</span><br><span class="line">npm install --save-dev gulp-htmlmin  （mac：前面添加sudo）</span><br><span class="line">**将ES6转换为ES5：gulp-babel**</span><br><span class="line">npm install --save-dev gulp-babel @babel/core @babel/preset-env  （mac：前面添加sudo）</span><br><span class="line">**服务器：gulp-connect**</span><br><span class="line">npm install --save-dev gulp-connect  （mac：前面添加sudo）</span><br><span class="line">**文件合并**</span><br><span class="line">npm install --save-dev gulp-concat   （mac：前面添加sudo）</span><br><span class="line">**sass转css  gulp-sass**</span><br><span class="line">npm install node-sass gulp-sass --save-dev （mac也不用加sudo）</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动gulp"><a href="#启动gulp" class="headerlink" title="启动gulp"></a>启动gulp</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp   （mac：sudo gulp）</span><br></pre></td></tr></table></figure>
+
+<h1 id="RequireJs"><a href="#RequireJs" class="headerlink" title="RequireJs"></a>RequireJs</h1><p>什么是RequireJs?</p>
+<p><code>RequireJS</code> 是一个JavaScript模块加载器。</p>
+<p>为什么使用RequireJS?</p>
+<p>模块化：模块化就是将不同功能的函数封装起来，并提供使用接口，他们彼此之间互不影响。<br>不会阻塞页面：RequireJS，会在相关的js加载后执行回调函数，这个过程是异步的，所以它不会阻塞页面。</p>
+<h3 id="require-config"><a href="#require-config" class="headerlink" title="require.config( )"></a>require.config( )</h3><p>require.config()</p>
+<p>可以对模块的加载行为进行自定义，并把模块变为全局可使用的。<code>require.config()</code>就写在主模块的头部。参数就是一个对象，这个对象的paths属性指定各个模块的加载路径（==不要加后缀==）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">    basaUrl:<span class="string">"/"</span>,</span><br><span class="line">    paths:&#123;</span><br><span class="line">        <span class="string">'jquery'</span>: <span class="string">'libs/jQuery/jquery-3.4.1.min'</span>,	<span class="comment">//不要加后缀</span></span><br><span class="line">        <span class="string">'header'</span>: <span class="string">'js/modules/header'</span>,</span><br><span class="line">        <span class="string">'bannerPlay'</span>: <span class="string">'js/modules/bannerPlay'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="require-function-引用模块"><a href="#require-function-引用模块" class="headerlink" title="require( [  ] ,function( ){ } ) -引用模块"></a>require( [  ] ,function( ){ } ) -引用模块</h3><p><code>require.js</code>的核心之一，它接受两个参数。第一个参数是一个数组，表示所依赖的模块;第二个参数是一个回调函数，当前面指定的模块加载成功后，它将被调用。加载的模块会以<strong>参数</strong>形式传入该函数，从而在<strong>回调函数内部</strong>就可以使用这些模块。<br> 既然第一个参数是数组，里面就可以有多个值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>([<span class="string">'./config'</span>], () =&gt; &#123;</span><br><span class="line">     <span class="built_in">require</span>([<span class="string">'header'</span>, <span class="string">'bannerPlay'</span>], () =&gt; &#123;</span><br><span class="line"></span><br><span class="line">     &#125;)</span><br><span class="line"> &#125;)</span><br><span class="line">PS:js里引用此模块的时候，需要嵌套引用</span><br></pre></td></tr></table></figure>
+
+<h3 id="define-function-定义模块"><a href="#define-function-定义模块" class="headerlink" title="define([],function(){})-定义模块"></a>define([],function(){})-定义模块</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">define([<span class="string">'jquery'</span>], () =&gt; &#123;	<span class="comment">//第一个参数是需要依赖的模块，这儿是数组，即可以为多个。</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Header</span> </span>&#123;</span><br><span class="line">        <span class="keyword">constructor</span>() &#123;</span><br><span class="line">            <span class="keyword">this</span>.load()</span><br><span class="line">        &#125;</span><br><span class="line">        load()&#123;</span><br><span class="line">            $(<span class="string">'header'</span>).load(<span class="string">'/html/modules/header.html'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Header();	<span class="comment">//必须return</span></span><br><span class="line">&#125;);</span><br><span class="line">PS: define的回调函数需要有 <span class="keyword">return</span> 语句返回模块对象，这样 define 定义的模块才能被其他模块引用；<span class="built_in">require</span> 的回调函数不需要 <span class="keyword">return</span> 语句。</span><br></pre></td></tr></table></figure>
+
+<h3 id="shim"><a href="#shim" class="headerlink" title="shim"></a>shim</h3><p>通过 require 加载的模块一般都需要符合 AMD 规范，即使用 define 来申明模块。</p>
+<p>但是部分时候需要加载非 AMD 规范的 js（如jQuery的一些插件），这时候就需要用到另一个功能：shim。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">require</span>.config(&#123;</span><br><span class="line">    basaUrl:<span class="string">"/"</span>,</span><br><span class="line">    paths:&#123;</span><br><span class="line">        <span class="string">'jquery'</span>: <span class="string">'libs/jQuery/jquery-3.4.1.min'</span>,	<span class="comment">//不要加后缀</span></span><br><span class="line">        <span class="string">'header'</span>: <span class="string">'js/modules/header'</span>,</span><br><span class="line">        <span class="string">'bannerPlay'</span>: <span class="string">'js/modules/bannerPlay'</span></span><br><span class="line">    &#125;</span><br><span class="line">    shim: &#123;</span><br><span class="line">    <span class="string">'carousel'</span>: &#123;</span><br><span class="line">        deps: [<span class="string">'jquery'</span>]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="template"><a href="#template" class="headerlink" title="template"></a>template</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/html"</span>&gt;</span><br><span class="line">    &#123;&#123;each list item&#125;&#125;</span><br><span class="line">    	&lt;li&gt;&#123;&#123;item&#125;&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">    &#123;&#123;/</span>each&#125;&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    或
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="http://www.noh55iw.com/RequireJs/" title="关于git,nodeJs,gulp,以及requireJs">http://www.noh55iw.com/RequireJs/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+          
+            <a href="/tags/requireJs/" rel="tag"><i class="fa fa-tag"></i> requireJs</a>
+          
+            <a href="/tags/Es6/" rel="tag"><i class="fa fa-tag"></i> Es6</a>
+          
+            <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i> Git</a>
+          
+            <a href="/tags/NodeJs/" rel="tag"><i class="fa fa-tag"></i> NodeJs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Vue/" rel="next" title="Vue">
+                <i class="fa fa-chevron-left"></i> Vue
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/ES5-ES6/" rel="prev" title="Es5和Es6">
+                Es5和Es6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="或">
+            
+              <p class="site-author-name" itemprop="name">或</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/doit9vansl" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=SH58enB_eXh_egg5OWYrJyU" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=642861062&site=qq&menu=yes" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://blog.csdn.net/Leejinian888" target="_blank" title="CSDN">
+                      
+                        <i class="fa fa-fw fa-bookmark"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.douban.com/people/Xybabi/" target="_blank" title="豆瓣">
+                      
+                        <i class="fa fa-fw fa-barcode"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://music.163.com/#/user/home?id=64834982" target="_blank" title="网易云">
+                      
+                        <i class="fa fa-fw fa-music"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GIT"><span class="nav-number">1.</span> <span class="nav-text">GIT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局配置用户名和邮箱"><span class="nav-number">1.0.1.</span> <span class="nav-text">全局配置用户名和邮箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置密钥对"><span class="nav-number">1.0.2.</span> <span class="nav-text">配置密钥对</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看git公钥"><span class="nav-number">1.0.3.</span> <span class="nav-text">查看git公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进入项目目录执行初始化git本地仓库"><span class="nav-number">1.0.4.</span> <span class="nav-text">进入项目目录执行初始化git本地仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#赋值线上仓库的SSH地址"><span class="nav-number">1.0.5.</span> <span class="nav-text">赋值线上仓库的SSH地址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#经过三步命令把代码放到本地仓库以及线上"><span class="nav-number">1.0.6.</span> <span class="nav-text">经过三步命令把代码放到本地仓库以及线上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附录"><span class="nav-number">1.0.7.</span> <span class="nav-text">附录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分支管理"><span class="nav-number">1.0.8.</span> <span class="nav-text">分支管理</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-js以及gulp"><span class="nav-number">2.</span> <span class="nav-text">Node.js以及gulp</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查看版本"><span class="nav-number">2.0.1.</span> <span class="nav-text">查看版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#全局安装-gulp"><span class="nav-number">2.0.2.</span> <span class="nav-text">全局安装 gulp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在项目目录下生成-package-json-文件"><span class="nav-number">2.0.3.</span> <span class="nav-text">在项目目录下生成 package.json 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在项目目录中本地安装-gulp"><span class="nav-number">2.0.4.</span> <span class="nav-text">在项目目录中本地安装 gulp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在项目目录中本地安装-gulp-插件-https-www-npmjs-com"><span class="nav-number">2.0.5.</span> <span class="nav-text">在项目目录中本地安装 gulp 插件(https://www.npmjs.com)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#启动gulp"><span class="nav-number">2.0.6.</span> <span class="nav-text">启动gulp</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RequireJs"><span class="nav-number">3.</span> <span class="nav-text">RequireJs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#require-config"><span class="nav-number">3.0.1.</span> <span class="nav-text">require.config( )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#require-function-引用模块"><span class="nav-number">3.0.2.</span> <span class="nav-text">require( [  ] ,function( ){ } ) -引用模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#define-function-定义模块"><span class="nav-number">3.0.3.</span> <span class="nav-text">define([],function(){})-定义模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shim"><span class="nav-number">3.0.4.</span> <span class="nav-text">shim</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#template"><span class="nav-number">4.</span> <span class="nav-text">template</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">或</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">19.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Q3fNjvL5eVpww53a23xUopYQ-gzGzoHsz',
+        appKey: 'YfAwPduY2QQnsfP2ONAOOxDd',
+        placeholder: 'Leave something   -from Author',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("Q3fNjvL5eVpww53a23xUopYQ-gzGzoHsz", "YfAwPduY2QQnsfP2ONAOOxDd");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"left","width":100,"height":160},"mobile":{"show":false}});</script></body>
+<script type="text/javascript" src="/js/src/click.js"></script>
+</html>
+

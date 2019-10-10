@@ -1,0 +1,4 @@
+.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:-webkit-linear-gradient(left, #12c2e9 , #c471ed,#f64f59); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #12c2e9, #c471ed,#f64f59); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #12c2e9, #c471ed,#f64f59); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #12c2e9 , #c471ed,#f64f59); /* 标准的语法 */position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}
