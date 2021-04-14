@@ -96,7 +96,7 @@
 <meta property="og:site_name" content="阚">
 <meta property="og:description" content="怎么在v-html中使用filter 平时一般都是在插值表达式中用|隔开来使用filter过滤器，在工作中遇到过需求在v-html中使用filter  1v-html=&quot;$options.filters.filterName()&quot;  Vue路由参数改变,重新刷新页面的方法 遇到一个需求，列表页有一个检索，带着参数跳转到检索页，然后在mounted里请求的数据。然后在检索页点击搜索的时候带着参数跳同">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-04-14T16:16:25.617Z">
+<meta property="og:updated_time" content="2021-04-14T16:21:37.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue开发小记">
 <meta name="twitter:description" content="怎么在v-html中使用filter 平时一般都是在插值表达式中用|隔开来使用filter过滤器，在工作中遇到过需求在v-html中使用filter  1v-html=&quot;$options.filters.filterName()&quot;  Vue路由参数改变,重新刷新页面的方法 遇到一个需求，列表页有一个检索，带着参数跳转到检索页，然后在mounted里请求的数据。然后在检索页点击搜索的时候带着参数跳同">
@@ -320,7 +320,7 @@
               
                 <span class="post-meta-item-text">Updated on</span>
               
-              <time title="Updated on" itemprop="dateModified" datetime="2021-04-15T00:16:25+08:00">
+              <time title="Updated on" itemprop="dateModified" datetime="2021-04-15T00:21:37+08:00">
                 2021-04-15
               </time>
             
@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  201
+                  204
                 </span>
               
 
@@ -449,16 +449,18 @@
 
 <h3 id="Vue路由参数改变-重新刷新页面的方法"><a href="#Vue路由参数改变-重新刷新页面的方法" class="headerlink" title="Vue路由参数改变,重新刷新页面的方法"></a>Vue路由参数改变,重新刷新页面的方法</h3><blockquote>
 <p>遇到一个需求，列表页有一个检索，带着参数跳转到检索页，然后在mounted里请求的数据。然后在检索页点击搜索的时候带着参数跳同一个路由页面；<br>但是并不会请求（不会重新走mounted），所以用这几种方法可解决。</p>
-<ul>
-<li>beforeRouteUpdate(to,from,next){}</li>
-</ul>
 </blockquote>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteUpdate(to,<span class="keyword">from</span>,next)&#123;</span><br><span class="line">    <span class="keyword">let</span> id = to.query.id</span><br><span class="line">    <span class="keyword">this</span>.fun(id)</span><br><span class="line">    next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li><router-view :key="$route.fullPath">
-> 在变化的路由视图router-view上加上:key='$route.fullPath'即可。</router-view></li>
-<li>监听路由<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">    $route:<span class="function">(<span class="params">newV,oldV</span>)=&gt;</span>&#123;</span><br><span class="line">        doSomeThing...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>beforeRouteUpdate(to,from,next){}</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteUpdate(to,<span class="keyword">from</span>,next)&#123;</span><br><span class="line">    <span class="keyword">let</span> id = to.query.id</span><br><span class="line">    <span class="keyword">this</span>.fun(id)</span><br><span class="line">    next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加key <router-view :key="$route.fullPath"></router-view></p>
+<blockquote>
+<p>在变化的路由视图router-view上加上:key=’$route.fullPath’即可。</p>
+</blockquote>
+</li>
+<li><p>监听路由</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">watch:&#123;</span><br><span class="line">    $route:<span class="function">(<span class="params">newV,oldV</span>)=&gt;</span>&#123;</span><br><span class="line">        doSomeThing...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
